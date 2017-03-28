@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Everyone Loves TO-DO lists!</title>
+	<style>
+		p, span, h1, h2, h3, h4, h5, h6 {
+			padding: 0;
+			margin: 0;
+		}
+
+		ul {
+			list-style: none;
+
+		}
+		table {
+			align: center;
+			border: 1px;
+		}
+
+
+		.wrapper {
+			width: 600px;
+			margin: 0 auto;
+
+		}
+
+		.complete_task {
+			margin: 0 auto;
+			display: block;
+		}
+	</style>
+
+</head>
+<body>
+	<div class='wrapper'>
+		<section class='section_input'>
+			<button id='button_add'>Add</button>
+			<input type='text' id='input_add'>
+		</section>
+		<section class='section_output'>
+			<ul class='select_category'>
+				<li>Working</li>
+				<li>Completed</li>
+				<li>All</li>
+				<li>None</li>
+			</ul>
+			<table id='table_tasks' border=1>
+				<thead>
+					<th>Done</th>
+					<th>Description</th>
+					<th>Date Added</th>
+					<th>Status</th>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+</body>
+	<script>
+	 //GLOBAL VARIABLES
+	 var tasks = [
+	 	['Create Mockup', '3/26/17', 'completed'],
+	 	['Create html', '3/26/17', 'working'],
+	 	['Add CSS', '3/26/17', 'working'],
+	 	['Commit to GIT', '3/26/17', 'working']
+	 ];
+
+	 
+	 //RENDER FUNCTIONS
+	 function displayTable(){
+	 	var table = document.getElementById('table_tasks').getElementsByTagName('tbody')[0];
+	 	var rows = [];
+	 	var cells = [];
+
+	 	for(i = 0; i < tasks.length; i++){
+	 		rows[i] = table.insertRow(i);
+
+	 		cells[0] = rows[i].insertCell(0);
+	 		cells[0].innerHTML = "<input id='task_"+i+"' type='checkbox' class='complete_task'>";
+
+	 		for(j = 0; j < tasks[i].length; j++){
+	 			cells[j+1] = rows[i].insertCell(j+1);
+	 			cells[j+1].innerHTML = tasks[i][j];
+	 		}
+	 	}
+	 	console.log(cells);
+	 }
+
+	 //EXECUTE FUNCTIONS
+	 function displayNewTask(){
+	 	var tableRef = document.getElementById('table_tasks').getElementsByTagName('tbody')[0];
+	 	var newRow = tableRef.insertRow(tableRef.rows.length);
+	 	
+	 	var cells = [];
+	 	var lastTask = tasks.length-1;
+	 	//newCells
+
+ 		cells[0] = newRow.insertCell(0);
+ 		cells[0].innerHTML = "<input id='task_"+tableRef.rows.length+"' type='checkbox' class='complete_task'>";
+
+ 		for(j = 0; j < tasks[lastTask].length; j++){
+ 			cells[j+1] = newRow.insertCell(j+1);
+ 			cells[j+1].innerHTML = tasks[lastTask][j];
+ 		}
+	 
+	 }
+	 //EVENT LISTENERS
+	 document.getElementById('button_add').addEventListener('click',
+	 	function(){
+	 		var new_task = document.getElementById('input_add').value;
+	 		if (new_task != ''){
+	 			tasks.push([new_task,'3/27/17', 'working']);
+	 			document.getElementById('input_add').value = '';
+	 			displayNewTask();
+	 		} else {
+	 			console.log('blanked');
+	 		}
+	 	}
+	 );
+
+	 displayTable();
+	</script>
+</html>
