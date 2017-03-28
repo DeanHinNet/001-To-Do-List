@@ -20,9 +20,9 @@
         <text>Current%2C%20Completed%2C%20All%2C%20None</text>
       </controlProperties>
     </control>
-    <control controlID="4" controlTypeID="com.balsamiq.mockups::DataGrid" x="247" y="333" w="297" h="188" measuredW="343" measuredH="171" zOrder="4" locked="false" isInGroup="-1">
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::DataGrid" x="247" y="333" w="297" h="188" measuredW="343" measuredH="201" zOrder="4" locked="false" isInGroup="-1">
       <controlProperties>
-        <text>%5B%5D%2C%20Task%2C%20Added%20Date%2C%20Status%0A%5B%5D%2C%20Make%20Mockup%2C%203/27/17%2C%20Completed%0A%5B%5D%2C%20HTML%2C%203/27/17%2C%20Not%20Completed%0A%5B%5D%2C%20CSS%2C%203/27/17%2C%20Not%20Completed%0A%5B%5D%2C%20JAVASCRIPT%2C%203/27/17%2C%20Not%20Completed%0A%5B%5D%2C%20Ability%20to%20Save%20to%20DB%2C%203/27/17%2C%20Not%20Completed</text>
+        <text>%5B%5D%2C%20Task%2C%20Added%20Date%2C%20Status%0A%5B%5D%2C%20Make%20Mockup%2C%203/27/17%2C%20Completed%0A%5B%5D%2C%20Add%20to%20Git%2C%203/27/17%2C%20Not%20Completed%0A%5B%5D%2C%20HTML%2C%203/27/17%2C%20Not%20Completed%0A%5B%5D%2C%20CSS%2C%203/27/17%2C%20Not%20Completed%0A%5B%5D%2C%20JAVASCRIPT%2C%203/27/17%2C%20Not%20Completed%0A%5B%5D%2C%20Ability%20to%20Save%20to%20DB%2C%203/27/17%2C%20Not%20Completed</text>
       </controlProperties>
     </control>
   </controls>

@@ -70,6 +70,7 @@
 	 
 	 //RENDER FUNCTIONS
 	 function displayTable(){
+	 	//displays the initial list of tasks
 	 	var table = document.getElementById('table_tasks').getElementsByTagName('tbody')[0];
 	 	var rows = [];
 	 	var cells = [];
@@ -90,6 +91,7 @@
 
 	 //EXECUTE FUNCTIONS
 	 function displayNewTask(){
+	 	//adds the latest task to the table as the last row
 	 	var tableRef = document.getElementById('table_tasks').getElementsByTagName('tbody')[0];
 	 	var newRow = tableRef.insertRow(tableRef.rows.length);
 	 	
@@ -109,6 +111,8 @@
 	 //EVENT LISTENERS
 	 document.getElementById('button_add').addEventListener('click',
 	 	function(){
+	 		//When the "add" button is clicked, the task is added to the tasks array, the input is than cleared, and the displayNewTask function is executed.
+
 	 		var new_task = document.getElementById('input_add').value;
 	 		if (new_task != ''){
 	 			tasks.push([new_task,'3/27/17', 'working']);
