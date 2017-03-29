@@ -28,8 +28,20 @@
 			margin: 0 auto;
 			display: block;
 		}
-	</style>
 
+		#select_category li{
+			display: inline-block;
+			padding: 3px;
+		}
+
+		.selected {
+			background-color: lightgray;
+		}
+	</style>
+<!--
+
+Add css filter for different statuses of tasks.
+-->
 </head>
 <body>
 	<div class='wrapper'>
@@ -38,11 +50,11 @@
 			<input type='text' id='input_add'>
 		</section>
 		<section class='section_output'>
-			<ul class='select_category'>
-				<li>Working</li>
-				<li>Completed</li>
-				<li>All</li>
-				<li>None</li>
+			<ul id='select_category'>
+				<li id='working' class='selected'>Working</li>
+				<li id='completed'>Completed</li>
+				<li id='all'>All</li>
+				<li id='none'>None</li>
 			</ul>
 			<table id='table_tasks' border=1>
 				<thead>
@@ -140,6 +152,22 @@
 	 	}
 	 );
 
+	 document.getElementById('select_category').addEventListener('click', function(evt){
+	 		var statuses = document.getElementById('select_category').getElementsByTagName('li');
+
+	 		for(i = 0; i < statuses.length; i++){
+	 			statuses[i].classList.remove('selected');
+	 		}
+
+	 		
+	 		// for (status in statuses) {
+	 		// 	status.classList.remove('selected');
+	 		// }
+	 		//console.log(document.getElementById('select_category').getElementsByTagName('li').innerHTML());
+	 		console.log(evt.target.id);
+
+	 	 }
+	 );
 	 displayTable();
 	</script>
 </html>
