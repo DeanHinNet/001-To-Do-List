@@ -40,7 +40,9 @@
 	</style>
 <!--
 
-Add css filter for different statuses of tasks.
+[x] Add css filter for different statuses of tasks.
+[] "Done" checkbox updates the status 
+
 -->
 </head>
 <body>
@@ -81,25 +83,44 @@ Add css filter for different statuses of tasks.
 
 	 
 	 //RENDER FUNCTIONS
-	 function displayTable(){
+	 function displayTable(status){
 	 	//displays the initial list of tasks
-	 	var table = document.getElementById('table_tasks').getElementsByTagName('tbody')[0];
+	 	//var new_tbody = document.createElement('tbody');
+	 	//var table = document.getElementById('table_tasks').getElementsByTagName('tbody')[0];
 	 	var rows = [];
 	 	var cells = [];
+	 	var old_tbody = document.getElementById('table_tasks').getElementsByTagName('tbody')[0];
+	 	var table = document.createElement('tbody');
+	 	var row_count = 0
 
 	 	for(i = 0; i < tasks.length; i++){
-	 		rows[i] = table.insertRow(i);
-	 		rows[i].setAttribute('id', 'row_'+i)
+	 		if(status == 'all'){
+		 		rows[i] = table.insertRow(i);
+		 		rows[i].setAttribute('id', 'row_'+i)
 
-	 		cells[0] = rows[i].insertCell(0);
-	 		cells[0].innerHTML = "<input id='task_"+i+"' type='checkbox' class='complete_task'>";
+		 		cells[0] = rows[i].insertCell(0);
+		 		cells[0].innerHTML = "<input id='task_"+i+"' type='checkbox' class='complete_task'>";
 
-	 		for(j = 0; j < tasks[i].length; j++){
-	 			cells[j+1] = rows[i].insertCell(j+1);
-	 			cells[j+1].innerHTML = tasks[i][j];
+		 		for(j = 0; j < tasks[i].length; j++){
+		 			cells[j+1] = rows[i].insertCell(j+1);
+		 			cells[j+1].innerHTML = tasks[i][j];
+		 		}
+	 		} else if(status == tasks[i][2]){
+	 			
+	 			rows[row_count] = table.insertRow(row_count);
+		 		rows[row_count].setAttribute('id', 'row_'+i)
+
+		 		cells[0] = rows[row_count].insertCell(0);
+		 		cells[0].innerHTML = "<input id='task_"+i+"' type='checkbox' class='complete_task'>";
+
+		 		for(j = 0; j < tasks[row_count].length; j++){
+		 			cells[j+1] = rows[row_count].insertCell(j+1);
+		 			cells[j+1].innerHTML = tasks[i][j];
+		 		}
+		 		row_count++;
 	 		}
 	 	}
-	 	console.log(cells);
+	 	 old_tbody.parentNode.replaceChild(table, old_tbody);
 	 }
 
 	 //EXECUTE FUNCTIONS
@@ -152,22 +173,21 @@ Add css filter for different statuses of tasks.
 	 	}
 	 );
 
-	 document.getElementById('select_category').addEventListener('click', function(evt){
+	 document.getElementById('select_category').addEventListener('click', 
+	 	function(evt){
+	 	//triggers when user clicks on status categories
 	 		var statuses = document.getElementById('select_category').getElementsByTagName('li');
-
+	 		var selected = document.getElementById(evt.target.id);
+	 		//removed 'selected' from all
 	 		for(i = 0; i < statuses.length; i++){
 	 			statuses[i].classList.remove('selected');
 	 		}
-
+	 		//add 'selected' class to clicked status
+	 		selected.className = 'selected';
 	 		
-	 		// for (status in statuses) {
-	 		// 	status.classList.remove('selected');
-	 		// }
-	 		//console.log(document.getElementById('select_category').getElementsByTagName('li').innerHTML());
-	 		console.log(evt.target.id);
-
+	 		displayTable(evt.target.id);
 	 	 }
 	 );
-	 displayTable();
+	 displayTable('all');
 	</script>
 </html>
