@@ -186,28 +186,38 @@
 	 	 }
 	 );
 
+
 	 //add event listeners to all the 'complete_task' buttons
 	 function doneListeners(){
-		 var done_class = document.getElementsByClassName('complete_task');
+		 var done_classes = document.getElementsByClassName('complete_task');
 
 		 var changeStatus = function(evt){
-		 	console.log(evt.target.id);
 		 	//find the task with the id
+		 	console.log('yo');
 		 	for(i=0; i < tasks.length; i++){
 		 		if(tasks[i][0] == evt.target.id){
-		 			tasks[i][]
+		 			//updated the tasks status
+		 			tasks[i][3] = 'completed';
+		 			console.log('yes');
 		 			i = tasks.length;
 		 		}
 		 	}	
+		 	displayTable('all');
 		 }
 
-		 for(i = 0; i < done_class.length; i++){
-		 		done_class[i].addEventListener('change',changeStatus);
+		 for(i = 0; i < done_classes.length; i++){
+		 //adds the eventlistener to all instances of the "complete_task" class
+		 		console.log('time to add');
+		 		done_classes[i].addEventListener('change',changeStatus);
 		 }
 	}
 
 	 //Initial display of the table of tasks
 	 displayTable('all');
-	 // doneListeners();
+	 doneListeners();
+
+	 //event listener for 1st complete_task
+	
+	 
 	</script>
 </html>
